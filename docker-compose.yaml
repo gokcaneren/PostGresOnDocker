@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_c
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=gokk
+      - POSTGRES_DB=dbbb
+    ports:
+      - "5433:5432"  
