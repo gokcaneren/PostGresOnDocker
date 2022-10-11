@@ -2,6 +2,7 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using SimpleApi;
 using SimpleApi.Dal;
+using SimpleApi.Dal.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DbbbContext>();
 
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
