@@ -12,5 +12,14 @@ namespace SimpleApi.Dal
 
          public DbSet<Category> Categories { get; set; }
          public DbSet<Product> Products { get; set; }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql("");
+
+
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }
