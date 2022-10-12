@@ -15,6 +15,7 @@ namespace SimpleApi.Dal.Repositories
         public async void AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
         public IQueryable<T> GetAllAsync()
@@ -27,14 +28,16 @@ namespace SimpleApi.Dal.Repositories
             return await _dbSet.FindAsync(id);
         }
 
-        public void Remove(T entity)
+        public async void Remove(T entity)
         {
             _dbSet.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(T entity)
+        public async void Update(T entity)
         {
             _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }
