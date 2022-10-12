@@ -20,5 +20,22 @@ namespace SimpleApi.Controllers
         {
             return Ok( _repository.GetAllAsync());
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProductById(int id){
+
+            var product = await _repository.GetAsync(id);
+
+            return Ok(product);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProduct(int id){
+            var product = await _repository.GetAsync(id);
+
+            _repository.Remove(product);
+
+            return NoContent();
+        }
     }
 }
