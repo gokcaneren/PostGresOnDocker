@@ -37,5 +37,19 @@ namespace SimpleApi.Controllers
 
             return NoContent();
         }
+
+        [HttpPost]
+        public ActionResult AddProduct(Product product)
+        {
+            _repository.AddAsync(product);
+            return Ok();
+        }
+
+        [HttpPut]
+        public ActionResult UpdateProduct(Product product)
+        {
+            _repository.Update(product);
+            return Ok();
+        }
     }
 }
